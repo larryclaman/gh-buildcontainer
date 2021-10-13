@@ -36,10 +36,10 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         # context: .  # not needed; using defult git contenxt
+        file: Dockerfile
         push: true
         tags: |
-          ghcr.io/${{ github.repository_owner }}/${{env.tag}}:${{env.GITHUB_RUN_ID}}
-        
+          ghcr.io/${{ github.repository_owner }}/${{env.tag}}:latest
         
 
 
