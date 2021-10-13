@@ -17,8 +17,6 @@ ARG COMPOSE_VERSION=1.24.0
 # Helm Version
 ARG HELM_VERSION=3.6.3
 
-# Runner version
-ARG RUNNER_VERSION="2.263.0"
 
 # Configure apt and install packages
 RUN apt-get update \
@@ -99,7 +97,9 @@ RUN  set -x; cd "$(mktemp -d)" && \
   rm krew.tar.gz
 RUN echo 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >>~/.bashrc
 
-# Runner
+# Runner version
+ARG RUNNER_VERSION="2.283.2"
+# Install Runner
 RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev
 # cd into the user directory, download and unzip the github actions runner
 RUN mkdir actions-runner && cd actions-runner \
